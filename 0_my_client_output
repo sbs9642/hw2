@@ -1,0 +1,10 @@
+GET /index.html HTTP/1.0
+Method = GET
+Request-URL = /index.html
+HTTP-Version = HTTP/1.0
+<!DOCTYPE html>
+<html>
+<body>
+<h1>COMP431</h1>
+</body>
+</html>
