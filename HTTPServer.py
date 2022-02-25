@@ -132,6 +132,7 @@ while True:
                             return False
                     if not WhiteSpace():
                         if index == (len(text)-5):
+                            Spurious = True
                             return False
                     HTTPe = index
                     text1 = text.replace(r"\r", "").replace(r"\n", "")
@@ -178,13 +179,18 @@ while True:
                 x=1
                 v501 = True
         else:
+            print("path 1")
             reply += ("ERROR -- Invalid Absolute-Path token." + '\n')
             break
         #print("whitespace")
-        if ((not Request_URL()) and (not v404) and (not v501)):
-            reply+=("ERROR -- Invalid Absolute-Path token." + '\n')
-            break
+#        if ((not Request_URL()) and (not v404) and (not v501)):
+ #           print("path 2")
+  #          reply+=("ERROR -- Invalid Absolute-Path token." + '\n')
+   #         break
         if not WhiteSpace():
+#            if Spurious:
+ #               reply+=("ERROR -- Sputious token before CRLF." + '\n')
+  #              break
             reply+=("ERROR -- Invalid Absolute-Path  token."+'\n')
             break
         #print("http version")
