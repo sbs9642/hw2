@@ -123,16 +123,17 @@ while True:
                 if text[index].isdigit():
 #dunno
                     if text[index] == text[-1]:
+                        HTTPe = index #i edit dis ho
                         return True
-                        HTTPe = index + 1
                     while text[index].isdigit():
                         index += 1
                         if index == len(text)-1:
                             HTTPe = index
                             return False
                     if not WhiteSpace():
-                        if index == (len(text)-5):
-                            Spurious = True
+                        #print(index, (len(text)-5))
+                        if index <= (len(text)-5):
+                            #print("this ho")
                             return False
                     HTTPe = index
                     text1 = text.replace(r"\r", "").replace(r"\n", "")
@@ -141,6 +142,8 @@ while True:
                         return True
                     else:
                         Spurious = True
+                        if (text[-1].isdigit() or (text[-1] == ".")):
+                            Spurious = False
                         return False
                 else:
                     return False
@@ -179,7 +182,7 @@ while True:
                 x=1
                 v501 = True
         else:
-            print("path 1")
+#            print("path 1")
             reply += ("ERROR -- Invalid Absolute-Path token." + '\n')
             break
         #print("whitespace")
