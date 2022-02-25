@@ -25,23 +25,26 @@ port_number = sys.argv[1]
 def client():
     global port_number
     clientSocket = socket(AF_INET, SOCK_STREAM)
-    clientSocket.connect((gethostname(), int(port_number)))
+    try:
+        clientSocket.connect((gethostname(), int(port_number)))
 #    print('Connection Error1')
 #35
 
-    while(True):
-        request = input()
-        clientSocket.send(request.encode())
+        while(True):
+            request = input()
+            clientSocket.send(request.encode())
 #            print('Connection Error2')
 
 
-        reply = clientSocket.recv(1024).decode()
+            reply = clientSocket.recv(1024).decode()
  #       print('Connection Error3')
-        answer = ''
+            answer = ''
         #print(reply.decode())
-        for line in reply.splitlines():
-            print(line)
+            for line in reply.splitlines():
+                print(line)
             #print("Connection closed");
-        clientSocket.close()
-        return
+            clientSocket.close()
+            return
+    except:
+        print("Connection Error")
 client()

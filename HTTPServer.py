@@ -50,10 +50,15 @@ while True:
     URLe_index = 0
     global HTTPs
     global HTTPe
-    v404 = False
-    v501 = False
+    global v404
+    global v501
     Spurious = False
     HTPPe = 0
+    v404 = False
+    v501 = False
+
+
+
     def Method():
         if len(text) < 3:
             return False
@@ -148,13 +153,17 @@ while True:
 
 
     while True:
+        #print("method")
         if not Method():
             reply += ("ERROR -- Invalid Method token." + '\n')
             break
-
+        #print("whitespace")
         if not WhiteSpace():
             reply += ("ERROR -- Invalid Method token." +'\n')
             break
+        #print("req url")
+        #print(Request_URL())
+        #print(v404, v501)
         if Request_URL():
             url = text[URLs_index:URLe_index]
             valid = url.split(".")[1].casefold()
@@ -169,10 +178,16 @@ while True:
                 x=1
                 v501 = True
         else:
+            reply += ("ERROR -- Invalid Absolute-Path token." + '\n')
+            break
+        #print("whitespace")
+        if ((not Request_URL()) and (not v404) and (not v501)):
+            reply+=("ERROR -- Invalid Absolute-Path token." + '\n')
             break
         if not WhiteSpace():
             reply+=("ERROR -- Invalid Absolute-Path  token."+'\n')
             break
+        #print("http version")
         if not HTTP_Version():
             if Spurious:
                 reply+=("ERROR -- Spurious token before CRLF."+'\n')
